@@ -9,6 +9,10 @@ class Game {
     createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
   }
 
+  preload() {
+    this.background.preload();
+  }
+
   draw() {
     clear();
     this.background.draw();
@@ -19,9 +23,7 @@ class Game {
     }
     this.obstacles.forEach((obstacle, index) => {
       obstacle.draw();
-      // if (obstacle.x + obstacle.width < 0) {
-      //   this.obstacles.splice(index, 1);
-      // }
+
       if (obstacle.x < -obstacle.width) {
         this.obstacles.splice(index, 1);
       }

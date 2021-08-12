@@ -4,7 +4,7 @@ class Player {
     this.x = 0;
     this.height = 150;
     this.width = 150;
-    this.speed = 5;
+    this.speed = 6;
     this.rightBoundary = CANVAS_WIDTH - this.width;
     this.bottomBoundary = CANVAS_HEIGHT - this.height;
   }
@@ -17,11 +17,10 @@ class Player {
 
   maintainBoundaries() {
     if (this.x >= this.rightBoundary) {
-      //   this.x = this.rightBoundary;
       this.x = 0;
     }
+
     if (this.y >= this.bottomBoundary) {
-      //   this.y = this.bottomBoundary;
       this.y = 0;
     }
     if (this.x < 0) {
