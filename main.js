@@ -11,7 +11,12 @@ function setup() {
 function preload() {
   bgImage = loadImage("./assets/background_base.png");
   thePig = loadImage("./assets/pig.png");
-  theBird = loadImage("./assets/red_angry_bird.png");
-  yellowBird = loadImage("./assets/yellow_bird.png");
+  //theBird = loadImage("./assets/red_angry_bird.png");
+  //yellowBird = loadImage("./assets/yellow_bird.png");
   // purpleBird = loadImage("./assets/purpl")
+  for (let i = 0; i < 3; i++) {
+    birds[i] = loadImage("./assets/bird" + i + ".png");
+  }
+
+  console.log(birds);
 }

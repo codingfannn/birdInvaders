@@ -6,6 +6,5 @@ const LEFT_ARROW = 37;
 const RIGHT_ARROW = 39;
 let bgImage;
 let thePig;
-let theBird;
-let yellowBird;
-let purpleBird;
+
+let birds = [];

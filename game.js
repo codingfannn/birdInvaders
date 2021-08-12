@@ -14,7 +14,7 @@ class Game {
     this.background.draw();
     this.player.draw();
 
-    if (frameCount % 100 === 0) {
+    if (frameCount % 45 === 0) {
       this.obstacles.push(new Obstacle());
     }
     this.obstacles.forEach((obstacle, index) => {
