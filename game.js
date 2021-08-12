@@ -9,16 +9,12 @@ class Game {
     createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
   }
 
-  preload() {
-    this.background.preload();
-  }
-
   draw() {
     clear();
     this.background.draw();
     this.player.draw();
 
-    if (frameCount % 60 === 0) {
+    if (frameCount % 100 === 0) {
       this.obstacles.push(new Obstacle());
     }
     this.obstacles.forEach((obstacle, index) => {
