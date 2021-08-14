@@ -13,3 +13,5 @@ let thePig;
 let birds = [];
 
 let bullet = [];
+
+let bulletImg;

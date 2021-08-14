@@ -33,9 +33,6 @@ class Game {
 
     this.bullet.forEach((bullet, index) => {
       bullet.show();
-      if (bullet.x >= CANVAS_WIDTH) {
-        if (bullet.delete) bullet.splice(index, 1);
-      }
     });
 
     //this.bullet.show();
