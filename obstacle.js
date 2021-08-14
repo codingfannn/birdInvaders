@@ -4,19 +4,20 @@ class Obstacle {
     this.height = 35;
     //this.x = 1500;
     this.x = CANVAS_WIDTH + this.width;
-    this.y = 300;
-
+    this.y = random(0, CANVAS_HEIGHT - this.height);
     this.currentBird = random(birds);
+    this.delete = false;
   }
 
   draw() {
     this.x -= 7;
-    //this.y +=
+
     this.height += random(0.3, 0.5);
     this.width += random(0.1, 0.3);
     image(this.currentBird, this.x, this.y, this.width, this.height);
-    //if (this.x <= -this.width) {
-    //  this.x = 0;
-    // }
+  }
+
+  remove() {
+    this.delete = true;
   }
 }

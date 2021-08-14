@@ -5,14 +5,16 @@ class Bullet {
     this.width = 75;
     this.height = 50;
     this.image = bulletImg;
+    this.delete = false;
   }
 
   show() {
     image(bulletImg, this.x, this.y, this.width, this.height);
     this.x += 5;
+    console.log(bulletImg);
   }
 
-  move() {
-    this.x += 5;
+  remove() {
+    this.delete = true;
   }
 }
