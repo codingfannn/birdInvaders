@@ -3,6 +3,7 @@ class Game {
     this.player = new Player();
     this.background = new Background();
     this.obstacles = [];
+    this.bullet = new Bullet(0, CANVAS_HEIGHT / 2.5);
   }
 
   setup() {
@@ -13,6 +14,8 @@ class Game {
     clear();
     this.background.draw();
     this.player.draw();
+    this.bullet.show();
+    this.bullet.move();
 
     if (frameCount % 45 === 0) {
       this.obstacles.push(new Obstacle());

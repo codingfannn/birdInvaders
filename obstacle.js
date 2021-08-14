@@ -5,7 +5,7 @@ class Obstacle {
     //this.x = 1500;
     this.x = CANVAS_WIDTH + this.width;
     this.y = 300;
-    this.speed = 5;
+
     this.currentBird = random(birds);
   }
 
