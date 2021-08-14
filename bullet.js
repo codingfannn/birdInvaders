@@ -1,12 +1,14 @@
 class Bullet {
-  constructor() {
-    this.x = 255;
-    this.y = CANVAS_HEIGHT / 2.5;
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
   }
 
   show() {
+    noStroke();
     fill(247, 223, 5);
     ellipse(this.x, this.y, 25, 25);
+    this.x += 5;
   }
 
   move() {

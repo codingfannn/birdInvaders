@@ -18,3 +18,7 @@ function preload() {
     birds[i] = loadImage("./assets/bird" + i + ".png");
   }
 }
+
+function keyPressed() {
+  game.keyPressed();
+}

@@ -3,19 +3,43 @@ class Game {
     this.player = new Player();
     this.background = new Background();
     this.obstacles = [];
-    this.bullet = new Bullet(0, CANVAS_HEIGHT / 2.5);
+    this.bullet = [];
   }
 
   setup() {
     createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
   }
 
+  mousePressed() {
+    if (song.isPlaying()) {
+      // .isPlaying() returns a boolean
+      song.stop();
+      background(255, 0, 0);
+    } else {
+      song.play();
+      background(0, 255, 0);
+    }
+  }
+
   draw() {
     clear();
     this.background.draw();
     this.player.draw();
-    this.bullet.show();
-    this.bullet.move();
+
+    /*for (let i = 0; i < bullet.length; i++) {
+      this.bullet[i].show();
+      this.bullet[i].move();
+    }*/
+
+    this.bullet.forEach((bullet, index) => {
+      bullet.show();
+      if (bullet.x >= CANVAS_WIDTH) {
+        if (bullet.delete) bullet.splice(index, 1);
+      }
+    });
+
+    //this.bullet.show();
+    //this.bullet.move();
 
     if (frameCount % 45 === 0) {
       this.obstacles.push(new Obstacle());
@@ -27,5 +51,12 @@ class Game {
         this.obstacles.splice(index, 1);
       }
     });
+  }
+
+  keyPressed() {
+    if (keyCode === SPACE) {
+      //let bullets = new Bullet(0, CANVAS_HEIGHT / 2.5);
+      this.bullet.push(new Bullet(this.player.x + 100, this.player.y + 100));
+    }
   }
 }
