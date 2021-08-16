@@ -16,11 +16,11 @@ class Player {
   }
 
   maintainBoundaries() {
-    if (this.x + this.width >= CANVAS_WIDTH) {
+    if (this.x >= this.rightBoundary) {
       this.x = this.rightBoundary;
     }
 
-    if (this.y + this.height >= this.bottomBoundary) {
+    if (this.y >= this.bottomBoundary) {
       this.y = this.bottomBoundary;
     }
 
