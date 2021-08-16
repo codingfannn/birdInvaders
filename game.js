@@ -8,18 +8,13 @@ class Game {
 
   setup() {
     createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
+    //createCanvas.mousePressed(canvasPressed);
+    //text("tap here to play", 10, 20);
   }
 
-  mousePressed() {
-    if (song.isPlaying()) {
-      // .isPlaying() returns a boolean
-      song.stop();
-      background(255, 0, 0);
-    } else {
-      song.play();
-      background(0, 255, 0);
-    }
-  }
+  /*canvasPressed() {
+    mySound.play();
+  }*/
 
   draw() {
     clear();

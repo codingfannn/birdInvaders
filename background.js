@@ -14,9 +14,4 @@ class Background {
       this.x = 0;
     }
   }
-
-  playSound() {
-    let audio = document.getElementsByClassName("music")[0];
-    audio.play();
-  }
 }

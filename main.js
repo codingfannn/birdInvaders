@@ -9,6 +9,7 @@ function setup() {
 }
 
 function preload() {
+  // mySound = loadSound("./assets/angrysong.mp3");
   bgImage = loadImage("./assets/background_base.png");
   thePig = loadImage("./assets/pig.png");
   //theBird = loadImage("./assets/red_angry_bird.png");

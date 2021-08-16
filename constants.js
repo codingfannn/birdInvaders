@@ -15,3 +15,5 @@ let birds = [];
 let bullet = [];
 
 let bulletImg;
+
+let mySound;

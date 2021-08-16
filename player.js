@@ -1,6 +1,6 @@
 class Player {
   constructor() {
-    this.y = CANVAS_HEIGHT / 3;
+    this.y = CANVAS_HEIGHT / 2;
     this.x = 0;
     this.height = 150;
     this.width = 150;
@@ -16,18 +16,20 @@ class Player {
   }
 
   maintainBoundaries() {
-    if (this.x >= this.rightBoundary) {
+    if (this.x + this.width >= CANVAS_WIDTH) {
+      this.x = this.rightBoundary;
+    }
+
+    if (this.y + this.height >= this.bottomBoundary) {
+      this.y = this.bottomBoundary;
+    }
+
+    if (this.x <= 0) {
       this.x = 0;
     }
 
-    if (this.y >= this.bottomBoundary) {
+    if (this.y <= 0) {
       this.y = 0;
-    }
-    if (this.x < 0) {
-      this.x = this.rightBoundary;
-    }
-    if (this.y < 0) {
-      this.y = this.bottomBoundary;
     }
   }
 

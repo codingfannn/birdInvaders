@@ -12,7 +12,7 @@ class Obstacle {
   draw() {
     this.x -= 7;
 
-    this.height += random(0.3, 0.5);
+    this.height += random(0.1, 0.3);
     this.width += random(0.1, 0.3);
     image(this.currentBird, this.x, this.y, this.width, this.height);
   }
