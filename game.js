@@ -5,20 +5,25 @@ class Game {
     this.obstacles = [];
     this.bullet = [];
     this.lives = 4;
-    this.isPlaying = true;
-  }
-
-  restartGame() {
-    if (this.isPlaying) {
-      return;
-    }
-
-    loop();
+    // this.isPlaying = true;
   }
 
   setup() {
     createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
     //mySound = loadSound("./assets/angrysong.mp3");
+  }
+
+  restartGame() {
+    if (isLooping()) {
+      return;
+    }
+    this.player = new Player();
+    this.background = new Background();
+    this.obstacles = [];
+    this.bullet = [];
+    this.lives = 4;
+    this.isPlaying = true;
+    loop();
   }
 
   // canvasPressed() {
@@ -61,9 +66,12 @@ class Game {
         this.obstacles.splice(index, 1);
         if (this.lives === 1) {
           this.isPlaying = false;
+
           noLoop();
+          console.log("YOUR GAME IS OOOOOVEEEEERRRR");
         }
         this.lives--;
+        console.log(this.lives);
       }
     });
 
@@ -103,9 +111,14 @@ class Game {
     }
     return true;
   }
+}
 
-  //1st can be used, they are the same
-  /*collisionCheck2(obstacle, player) {
+// canvasPressed() {
+// mySound.play();
+//}
+
+//1st can be used, they are the same
+/*collisionCheck2(obstacle, player) {
     // UA > TB
     // RA > LB
     // LA < RB
@@ -125,13 +138,13 @@ class Game {
     return true;
   }*/
 
-  //collisionCheck(player, obstacle) {
-  // UA > TB
-  // RA > LB
-  // LA < RB
-  // TA < UB
+//collisionCheck(player, obstacle) {
+// UA > TB
+// RA > LB
+// LA < RB
+// TA < UB
 
-  /*const aUnderSide = player.y + player.height;
+/*const aUnderSide = player.y + player.height;
     const bTopSide = obstacle.y;
 
     if (aUnderSide < bTopSide) {
@@ -159,4 +172,3 @@ class Game {
 
     return true;
   }*/
-}
