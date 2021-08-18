@@ -19,6 +19,8 @@ function preload() {
   for (let i = 0; i < 3; i++) {
     birds[i] = loadImage("./assets/bird" + i + ".png");
   }
+
+  explosionImage = loadImage("./assets/explosion.png");
 }
 
 function keyPressed() {

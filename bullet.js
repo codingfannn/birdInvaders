@@ -11,10 +11,22 @@ class Bullet {
   show() {
     image(bulletImg, this.x, this.y - 20, this.width, this.height);
     this.x += 5;
-    console.log(bulletImg);
   }
 
   remove() {
     this.delete = true;
+  }
+
+  get bottomSide() {
+    return this.y + this.height;
+  }
+  get topSide() {
+    return this.y;
+  }
+  get leftSide() {
+    return this.x;
+  }
+  get rightSide() {
+    return this.x + this.width;
   }
 }

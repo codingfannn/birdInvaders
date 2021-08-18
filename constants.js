@@ -5,9 +5,10 @@ const UP_ARROW = 38;
 const LEFT_ARROW = 37;
 const RIGHT_ARROW = 39;
 const SPACE = 32;
+const ENTER = 13;
 
-let song;
 let bgImage;
+
 let thePig;
 
 let birds = [];
@@ -17,3 +18,5 @@ let bullet = [];
 let bulletImg;
 
 let mySound;
+
+let explosionImage;

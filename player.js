@@ -7,6 +7,7 @@ class Player {
     this.speed = 15;
     this.rightBoundary = CANVAS_WIDTH - this.width;
     this.bottomBoundary = CANVAS_HEIGHT - this.height;
+    this.delete = false;
   }
 
   draw() {
@@ -33,6 +34,10 @@ class Player {
     }
   }
 
+  remove() {
+    this.delete = true;
+  }
+
   move() {
     if (keyIsDown(DOWN_ARROW)) {
       this.y += this.speed;
@@ -46,5 +51,18 @@ class Player {
     if (keyIsDown(UP_ARROW)) {
       this.y -= this.speed;
     }
+  }
+
+  get bottomSide() {
+    return this.y + this.height;
+  }
+  get topSide() {
+    return this.y;
+  }
+  get leftSide() {
+    return this.x;
+  }
+  get rightSide() {
+    return this.x + this.width;
   }
 }
