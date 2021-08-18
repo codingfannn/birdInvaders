@@ -10,7 +10,11 @@ class Game {
 
   setup() {
     createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
-    //mySound = loadSound("./assets/angrysong.mp3");
+    mySound = loadSound("./assets/angrysong.mp3");
+  }
+
+  loaded() {
+    mySound.loop();
   }
 
   restartGame() {
@@ -26,6 +30,13 @@ class Game {
     loop();
   }
 
+  /*gameOver() {
+    background(150);
+    //textAlign(CENTER);
+    text("GAME OVER", CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2);
+
+    text("PRESS ENTER to play again", CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2 + 40);
+  }*/
   // canvasPressed() {
   // mySound.play();
   //}
@@ -34,7 +45,7 @@ class Game {
     this.background.draw();
     this.player.draw();
 
-    // mySound.setVolume(0.6);
+    mySound.setVolume(0.6);
 
     /*for (let i = 0; i < bullet.length; i++) {
       this.bullet[i].show();
@@ -68,10 +79,13 @@ class Game {
           this.isPlaying = false;
 
           noLoop();
+          mySound.pause();
           console.log("YOUR GAME IS OOOOOVEEEEERRRR");
         }
         this.lives--;
+        scoreHolder.innerText = this.lives;
         console.log(this.lives);
+        //gameOver();
       }
     });
 
