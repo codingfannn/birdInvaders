@@ -21,4 +21,4 @@ let mySound;
 
 let explosionImage;
 
-const scoreHolder = document.querySelector("h1 span");
+const livesHolder = document.querySelector("h1");

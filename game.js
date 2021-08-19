@@ -5,16 +5,12 @@ class Game {
     this.obstacles = [];
     this.bullet = [];
     this.lives = 4;
-    // this.isPlaying = true;
+    this.isStarted = false;
   }
 
   setup() {
     createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
-    mySound = loadSound("./assets/angrysong.mp3");
-  }
-
-  loaded() {
-    mySound.loop();
+    mySound = loadSound("./assets/AngryThemeSong.mp3");
   }
 
   restartGame() {
@@ -23,86 +19,104 @@ class Game {
     }
     this.player = new Player();
     this.background = new Background();
-    this.obstacles = [];
     this.bullet = [];
     this.lives = 4;
-    this.isPlaying = true;
+    livesHolder.innerText = "Lives: <span>4</span>";
     loop();
+    mySound.play();
   }
 
-  /*gameOver() {
+  gameOver() {
+    livesHolder.innerHTML = "";
     background(150);
-    //textAlign(CENTER);
+    textAlign(CENTER);
     text("GAME OVER", CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2);
-
     text("PRESS ENTER to play again", CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2 + 40);
-  }*/
-  // canvasPressed() {
-  // mySound.play();
-  //}
+  }
+
+  startScreen() {
+    background(150);
+    textAlign(CENTER);
+    text("BIRD INVADERS THE GAME", CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2);
+    text("PRESS ENTER to Start", CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2 + 40);
+  }
 
   draw() {
-    this.background.draw();
-    this.player.draw();
+    // Show the start screen until not started
+    if (!this.isStarted) {
+      this.startScreen();
+    }
+    // If game started draw all the things
+    else {
+      livesHolder.innerHTML = `Lives: <span>${this.lives}</span>`;
+      this.background.draw();
+      this.player.draw();
 
-    mySound.setVolume(0.6);
+      mySound.setVolume(0.6);
 
-    /*for (let i = 0; i < bullet.length; i++) {
+      /*for (let i = 0; i < bullet.length; i++) {
       this.bullet[i].show();
       this.bullet[i].move();
     }*/
 
-    /*this.bullet.forEach((bullet, index) => {
+      /*this.bullet.forEach((bullet, index) => {
       bullet.show();
       if (bullet.x >= CANVAS_WIDTH) {
         bullet.remove();
       }
     });*/
 
-    //this.bullet.show();
-    //this.bullet.move();
+      //this.bullet.show();
+      //this.bullet.move();
 
-    if (frameCount % 30 === 0) {
-      this.obstacles.push(new Obstacle());
-    }
-    this.obstacles.forEach((obstacle, index) => {
-      obstacle.draw();
-
-      if (obstacle.x < -obstacle.width) {
-        this.obstacles.splice(index, 1);
+      if (frameCount % 30 === 0) {
+        this.obstacles.push(new Obstacle());
       }
 
-      if (this.collisionCheck(this.player, obstacle)) {
-        console.log("-lives");
-        this.obstacles.splice(index, 1);
-        if (this.lives === 1) {
-          this.isPlaying = false;
+      this.obstacles.forEach((obstacle, index) => {
+        obstacle.draw();
 
-          noLoop();
-          mySound.pause();
-          console.log("YOUR GAME IS OOOOOVEEEEERRRR");
+        if (obstacle.x < -obstacle.width) {
+          this.obstacles.splice(index, 1);
         }
-        this.lives--;
-        scoreHolder.innerText = this.lives;
-        console.log(this.lives);
-        //gameOver();
-      }
-    });
 
-    /*if (this.collisionCheck(this.player, this.obstacle)) {
-      console.log("AAAAAAAAAAAA");
-      this.points++;
-    }*/
+        if (this.collisionCheck(this.player, obstacle)) {
+          console.log("-lives");
+          this.obstacles.splice(index, 1);
+          this.lives--;
+          livesHolder.innerHTML = `Lives: <span>${this.lives}</span>`;
+          console.log(this.lives);
+        }
+      });
+
+      if (this.lives === 0) {
+        noLoop();
+        mySound.stop();
+        console.log("YOUR GAME IS OOOOOVEEEEERRRR");
+        this.obstacles = [];
+        this.gameOver();
+      }
+    }
   }
 
   keyPressed() {
+    if (!mySound.isPlaying() && isLooping()) {
+      mySound.loop();
+      mySound.play();
+      console.log("play started");
+    }
+
     if (keyCode === SPACE) {
       //let bullets = new Bullet(0, CANVAS_HEIGHT / 2.5);
       this.bullet.push(new Bullet(this.player.x + 100, this.player.y + 100));
     }
 
     if (keyCode === ENTER) {
-      this.restartGame();
+      if (isLooping()) {
+        this.isStarted = true;
+      } else {
+        this.restartGame();
+      }
     }
   }
 
@@ -126,10 +140,6 @@ class Game {
     return true;
   }
 }
-
-// canvasPressed() {
-// mySound.play();
-//}
 
 //1st can be used, they are the same
 /*collisionCheck2(obstacle, player) {
