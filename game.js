@@ -28,17 +28,31 @@ class Game {
 
   gameOver() {
     livesHolder.innerHTML = "";
-    background(150);
+    //background(150);
+    image(bgImage, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+    image(gameOverImage, 700, 175, 600, 400);
+
     textAlign(CENTER);
-    text("GAME OVER", CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2);
-    text("PRESS ENTER to play again", CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2 + 40);
+    //text("GAME OVER", CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2);
+    text(
+      "PRESS ENTER to play again",
+      CANVAS_WIDTH / 2,
+      CANVAS_HEIGHT / 2 + 150
+    );
   }
 
   startScreen() {
-    background(150);
+    // background(150);
+    image(bgImage, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
+    fill(5, 245, 105);
+    textFont("Georgia", 75);
+    stroke(color(237, 34, 2));
+    strokeWeight(5);
     textAlign(CENTER);
-    text("BIRD INVADERS THE GAME", CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2);
-    text("PRESS ENTER to Start", CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2 + 40);
+    //text("BIRD INVADERS THE GAME", 1000, 300);
+    //text("YOUR GOAL IS TO AVOID THE BIRDS", 1000, 500);
+    text("PRESS ENTER to Start", CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2);
   }
 
   draw() {

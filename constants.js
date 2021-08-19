@@ -22,3 +22,5 @@ let mySound;
 let explosionImage;
 
 const livesHolder = document.querySelector("h1");
+
+let gameOverImage;

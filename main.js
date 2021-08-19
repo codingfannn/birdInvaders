@@ -20,6 +20,7 @@ function preload() {
   }
 
   explosionImage = loadImage("./assets/explosion.png");
+  gameOverImage = loadImage("./assets/gameover.png");
 }
 
 function loaded() {
