@@ -30,14 +30,14 @@ class Game {
     livesHolder.innerHTML = "";
     //background(150);
     image(bgImage, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-    image(gameOverImage, 700, 175, 600, 400);
+    image(gameOverImage, 480, 175, 600, 400);
 
     textAlign(CENTER);
     //text("GAME OVER", CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2);
     text(
       "PRESS ENTER to play again",
       CANVAS_WIDTH / 2,
-      CANVAS_HEIGHT / 2 + 150
+      CANVAS_HEIGHT / 2 + 200
     );
   }
 
